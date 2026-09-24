@@ -5,6 +5,7 @@ import { Bounce, Slide, ToastContainer } from "react-toastify";
 import FitLogProvider from "@/context/FitLogContext";
 import { Oswald } from "next/font/google";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -35,7 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <FitLogProvider>
           <Navbar />
           {children}
-
+          <Footer />
           <ToastContainer
             position="top-right"
             autoClose={1000}

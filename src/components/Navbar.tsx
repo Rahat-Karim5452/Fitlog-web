@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../public/images/logo.png";
 import NavbarCounters from "./NavbarCounters";
+import NavLinks from "./NavLinks";
 
 const Navbar = () => {
   return (
@@ -14,13 +15,7 @@ const Navbar = () => {
         </Link>
 
         <div className=" hidden items-center gap-8 md:flex">
-          <Link href="/" className="hover:text-[#C2F800] ">
-            Workouts
-          </Link>
-
-          <Link href="/my-plan" className="hover:text-[#C2F800] ">
-            My Plan
-          </Link>
+          <NavLinks />
         </div>
 
         <NavbarCounters />
