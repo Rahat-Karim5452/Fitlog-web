@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 import { notFound } from "next/navigation";
 import { getWorkout } from "@/lib/api";
+import AddToPlanButton from "@/components/buttons/AddToPlanButton";
 
 const WorkoutDetailsPage = async ({
   params,
@@ -37,7 +38,7 @@ const WorkoutDetailsPage = async ({
             alt={workout.name}
             width={800}
             height={800}
-            className="h-full min-h-[400px] w-full object-cover"
+            className="h-full min-h-100 w-full object-cover"
           />
         </div>
 
@@ -157,7 +158,9 @@ const WorkoutDetailsPage = async ({
           </div>
 
           {/* Buttons */}
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row"></div>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <AddToPlanButton workout={workout} />
+          </div>
         </div>
       </div>
     </main>

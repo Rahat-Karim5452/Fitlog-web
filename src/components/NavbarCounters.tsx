@@ -12,7 +12,7 @@ const NavbarCounters = () => {
       <Link href="/my-plan" className="flex items-center gap-2">
         <span>Plan</span>
 
-        <span className="rounded-full bg-lime-400 px-2 py-1 text-black">
+        <span className="rounded-full bg-[#C2F800]  px-2 py-1 text-black">
           {plan.length}
         </span>
       </Link>
