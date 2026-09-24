@@ -10,14 +10,11 @@ const Navbar = () => {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-5">
         <Link href="/" className="flex items-center gap-2">
           <Image src={Logo} alt="FitLog Logo" width={30} height={30} />
-
           <span className="font-bold tracking-wide text-xl">FITLOG</span>
         </Link>
-
         <div className=" hidden items-center gap-8 md:flex">
           <NavLinks />
         </div>
-
         <NavbarCounters />
       </div>
     </nav>

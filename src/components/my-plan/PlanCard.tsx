@@ -3,17 +3,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaClock, FaFire, FaStar } from "react-icons/fa";
-import { IWorkout } from "../../../types/workout";
 
+import { IWorkout } from "../../../types/workout";
 import MarkDoneButton from "../buttons/MarkDoneButton";
 import RemoveButton from "../buttons/RemoveButton";
 
 const PlanCard = ({
   workout,
   showActions,
+  showMarkDone,
 }: {
   workout: IWorkout;
   showActions: boolean;
+  showMarkDone: boolean;
 }) => {
   return (
     <div className="overflow-hidden rounded-2xl border border-white/10 bg-zinc-900">
@@ -77,8 +79,11 @@ const PlanCard = ({
 
           {showActions && (
             <>
-              <MarkDoneButton id={workout.id} />
-              <RemoveButton id={workout.id} />
+              {showMarkDone && <MarkDoneButton id={workout.id} />}
+              <RemoveButton
+                id={workout.id}
+                type={showMarkDone ? "plan" : "saved"}
+              />
             </>
           )}
         </div>

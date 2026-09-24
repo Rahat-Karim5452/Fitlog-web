@@ -10,7 +10,7 @@ const NavLinks = () => {
     <div className="hidden items-center gap-2 md:flex">
       <Link
         href="/"
-        className={`rounded-full px-5 py-2 text-sm font-bold uppercase transition ${
+        className={`rounded-full px-5 py-2 text-sm font-bold transition ${
           pathname === "/"
             ? "bg-lime-400 text-black"
             : "text-zinc-400 hover:text-white"
@@ -21,7 +21,7 @@ const NavLinks = () => {
 
       <Link
         href="/my-plan"
-        className={`rounded-full px-5 py-2 text-sm font-bold uppercase transition ${
+        className={`rounded-full px-5 py-2 text-sm font-bold transition ${
           pathname === "/my-plan"
             ? "bg-lime-400 text-black"
             : "text-zinc-400 hover:text-white"

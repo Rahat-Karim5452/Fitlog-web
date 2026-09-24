@@ -29,7 +29,7 @@ export default function WorkoutCard({ workout }: WorkoutCardProps) {
           {workout.muscleGroups.map((muscle) => (
             <span
               key={muscle}
-              className="rounded-full bg-[#ccff00] px-2 py-1 text-[10px] font-bold text-black"
+              className="rounded-full bg-lime-400 px-2 py-1 text-[10px] font-bold text-black"
             >
               {muscle.toUpperCase()}
             </span>

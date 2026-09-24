@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="mx-auto max-w-7xl px-5 pt-8 lg:px-8">
       <div className="grid overflow-hidden rounded-xl border border-white/10 bg-[#15161b] lg:grid-cols-2">
         <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
-          <p className="mb-4 text-xs font-bold tracking-[0.2em] text-[#ccff00]">
+          <p className="mb-4 text-xs font-bold tracking-[0.2em] text-lime-400">
             WORKOUT LIBRARY
           </p>
 
@@ -21,7 +21,7 @@ export default function Hero() {
 
           <a
             href="#library"
-            className="mt-7 w-fit rounded-md bg-[#ccff00] px-5 py-3 text-sm font-bold text-black transition hover:bg-[#b9eb00]"
+            className="mt-7 w-fit rounded-md bg-lime-400 px-5 py-3 text-sm font-bold text-black transition hover:bg-lime-400"
           >
             BROWSE WORKOUTS
           </a>

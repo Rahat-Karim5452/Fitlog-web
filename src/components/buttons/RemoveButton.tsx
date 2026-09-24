@@ -6,17 +6,23 @@ import { toast } from "react-toastify";
 
 import { FitLogContext } from "@/context/FitLogContext";
 
-const RemoveButton = ({ id }: { id: number }) => {
-  const { setPlan } = useContext(FitLogContext);
+const RemoveButton = ({ id, type }: { id: number; type: "plan" | "saved" }) => {
+  const { setPlan, setSaved } = useContext(FitLogContext);
 
   const handleRemove = () => {
-    setPlan((previousPlan) =>
-      previousPlan.filter((workout) => workout.id !== id),
-    );
-
-    toast.success("Workout removed");
+    if (type === "plan") {
+      setPlan((previousPlan) =>
+        previousPlan.filter((workout) => workout.id !== id),
+      );
+      toast.success("Workout removed from today's plan");
+    }
+    if (type === "saved") {
+      setSaved((previousSaved) =>
+        previousSaved.filter((workout) => workout.id !== id),
+      );
+      toast.success("Workout removed from saved");
+    }
   };
-
   return (
     <button
       onClick={handleRemove}
