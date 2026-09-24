@@ -13,10 +13,14 @@ const Navbar = () => {
           <span className="font-bold tracking-wide text-xl">FITLOG</span>
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
-          <Link href="/">Workouts</Link>
+        <div className=" hidden items-center gap-8 md:flex">
+          <Link href="/" className="hover:text-lime-400">
+            Workouts
+          </Link>
 
-          <Link href="/my-plan">My Plan</Link>
+          <Link href="/my-plan" className="hover:text-lime-400">
+            My Plan
+          </Link>
         </div>
 
         <NavbarCounters />

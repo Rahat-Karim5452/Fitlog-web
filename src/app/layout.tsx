@@ -3,7 +3,12 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import FitLogProvider from "@/context/FitLogContext";
+import { Oswald } from "next/font/google";
+import Navbar from "@/components/Navbar";
 
+const oswald = Oswald({
+  subsets: ["latin"],
+});
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -28,7 +33,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <FitLogProvider>
+          <Navbar />
           {children}
+
           <ToastContainer />
         </FitLogProvider>
       </body>
