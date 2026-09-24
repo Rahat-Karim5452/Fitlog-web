@@ -3,7 +3,10 @@ import WorkoutCard from "./WorkOutCard";
 
 const WorkoutGrid = ({ workouts }: { workouts: IWorkout[] }) => {
   return (
-    <section id="library" className="mx-auto mt-14 max-w-7xl px-5 lg:px-8">
+    <section
+      id="library"
+      className="mx-auto mt-14 max-w-7xl px-5 lg:px-8 py-10"
+    >
       <div className="mb-7">
         <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold uppercase leading-none tracking-wide sm:text-4xl">
           THE LIBRARY

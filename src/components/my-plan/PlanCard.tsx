@@ -5,6 +5,9 @@ import Link from "next/link";
 import { FaClock, FaFire, FaStar } from "react-icons/fa";
 import { IWorkout } from "../../../types/workout";
 
+import MarkDoneButton from "../buttons/MarkDoneButton";
+import RemoveButton from "../buttons/RemoveButton";
+
 const PlanCard = ({
   workout,
   showActions,
@@ -64,13 +67,20 @@ const PlanCard = ({
         </div>
 
         {/* Actions */}
-        <div className="flex flex-row items-center justify-center gap-3 border-t border-white/10 p-4 sm:p-5 md:flex-col md:border-l md:border-t-0">
+        <div className="flex flex-row flex-wrap items-center justify-center gap-3 border-t border-white/10 p-4 sm:p-5 md:border-l md:border-t-0">
           <Link
             href={`/workout/${workout.id}`}
             className="rounded-full border border-white/20 px-4 py-2 text-xs font-bold uppercase transition hover:border-lime-400 hover:text-lime-400 sm:px-5 sm:text-sm"
           >
             View Details
           </Link>
+
+          {showActions && (
+            <>
+              <MarkDoneButton id={workout.id} />
+              <RemoveButton id={workout.id} />
+            </>
+          )}
         </div>
       </div>
     </div>

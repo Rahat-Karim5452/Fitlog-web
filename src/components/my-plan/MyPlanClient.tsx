@@ -6,10 +6,12 @@ import { FitLogContext } from "@/context/FitLogContext";
 import PlanCard from "./PlanCard";
 
 type ActiveTab = "plan" | "saved";
+type SortType = "duration" | "calories" | "rating";
 
 const MyPlanClient = () => {
   const { plan, saved } = useContext(FitLogContext);
   const [activeTab, setActiveTab] = useState<ActiveTab>("plan");
+  const [sortBy, setSortBy] = useState<SortType>("duration");
 
   const totalMinutes = plan.reduce(
     (total, workout) => total + workout.duration,
@@ -21,7 +23,13 @@ const MyPlanClient = () => {
     0,
   );
 
-  const currentList = activeTab === "plan" ? plan : saved;
+  const currentList = [...(activeTab === "plan" ? plan : saved)].sort(
+    (a, b) => {
+      if (sortBy === "duration") return b.duration - a.duration;
+      if (sortBy === "calories") return b.caloriesBurned - a.caloriesBurned;
+      return b.rating - a.rating;
+    },
+  );
 
   return (
     <main className="w-full px-4 py-6 sm:px-6 md:px-10 lg:px-20 xl:px-35 md:py-10">
@@ -29,7 +37,6 @@ const MyPlanClient = () => {
         <h1 className="text-2xl font-black uppercase tracking-tight sm:text-3xl">
           My Plan
         </h1>
-
         <p className="mt-2 text-sm text-zinc-500">
           Cap of five lifts for today. Finish them, then load more.
         </p>
@@ -39,7 +46,6 @@ const MyPlanClient = () => {
         <div className="grid grid-cols-3">
           <div className="px-3 py-4 sm:px-5 sm:py-6">
             <p className="text-xs text-zinc-500">Exercises</p>
-
             <p className="mt-1 text-xl font-black text-[#C2F800] sm:text-2xl md:text-3xl">
               {plan.length}
             </p>
@@ -47,7 +53,6 @@ const MyPlanClient = () => {
 
           <div className="border-l border-white/10 px-3 py-4 sm:px-5 sm:py-6">
             <p className="text-xs text-zinc-500">Minutes</p>
-
             <p className="mt-1 text-xl font-black sm:text-2xl md:text-3xl">
               {totalMinutes}
             </p>
@@ -55,7 +60,6 @@ const MyPlanClient = () => {
 
           <div className="border-l border-white/10 px-3 py-4 sm:px-5 sm:py-6">
             <p className="text-xs text-zinc-500">Calories</p>
-
             <p className="mt-1 text-xl font-black sm:text-2xl md:text-3xl">
               {totalCalories}
             </p>
@@ -64,7 +68,7 @@ const MyPlanClient = () => {
       </div>
 
       {/* Tabs */}
-      <div className="mt-7 flex items-center justify-between overflow-x-auto">
+      <div className="mt-7 flex flex-wrap items-center justify-between gap-3">
         <div className="inline-flex rounded-xl border border-white/10 bg-zinc-900 p-1">
           <button
             onClick={() => setActiveTab("plan")}
@@ -88,6 +92,26 @@ const MyPlanClient = () => {
             Saved
           </button>
         </div>
+
+        {/* Sort Start */}
+        {currentList.length > 0 && (
+          <div className="flex items-center gap-3">
+            <label htmlFor="sort" className="text-sm text-zinc-400">
+              Sort By
+            </label>
+
+            <select
+              id="sort"
+              value={sortBy}
+              onChange={(event) => setSortBy(event.target.value as SortType)}
+              className="rounded-full border border-white/10 bg-zinc-900 px-4 py-2 text-sm outline-none focus:border-lime-400"
+            >
+              <option value="duration">Duration</option>
+              <option value="calories">Calories</option>
+              <option value="rating">Rating</option>
+            </select>
+          </div>
+        )}
       </div>
 
       {/* List */}
@@ -97,11 +121,9 @@ const MyPlanClient = () => {
             <h2 className="text-2xl font-black uppercase sm:text-3xl">
               Nothing here yet
             </h2>
-
             <p className="mx-auto mt-3 max-w-md text-sm text-zinc-400 sm:text-base">
               Browse the library and add a lift to get today moving.
             </p>
-
             <Link
               href="/"
               className="mt-6 inline-flex rounded-full bg-[#C2F800] px-6 py-3 font-bold uppercase text-black transition hover:bg-lime-300"
