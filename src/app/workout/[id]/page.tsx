@@ -4,6 +4,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import { notFound } from "next/navigation";
 import { getWorkout } from "@/lib/api";
 import AddToPlanButton from "@/components/buttons/AddToPlanButton";
+import SaveButton from "@/components/buttons/SaveButton";
 
 const WorkoutDetailsPage = async ({
   params,
@@ -160,6 +161,7 @@ const WorkoutDetailsPage = async ({
           {/* Buttons */}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <AddToPlanButton workout={workout} />
+            <SaveButton workout={workout} />
           </div>
         </div>
       </div>

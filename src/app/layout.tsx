@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ToastContainer } from "react-toastify";
+import { Bounce, Slide, ToastContainer } from "react-toastify";
 import FitLogProvider from "@/context/FitLogContext";
 import { Oswald } from "next/font/google";
 import Navbar from "@/components/Navbar";
@@ -36,7 +36,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Navbar />
           {children}
 
-          <ToastContainer />
+          <ToastContainer
+            position="top-right"
+            autoClose={1000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+            transition={Slide}
+          />
         </FitLogProvider>
       </body>
     </html>
