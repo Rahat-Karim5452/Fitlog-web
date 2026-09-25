@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FitLog
 
-## Getting Started
+FitLog is a modern workout library and workout planning
+application built with Next.js, TypeScript and Tailwind CSS.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Browse workout library
+- View detailed workout information
+- Add workouts to today's plan
+- Save workouts for later
+- Track completed workouts
+- Sort workouts by duration, calories and rating
+- Responsive design for mobile, tablet and desktop
+- Toast notifications
+- Custom 404 page
+- Loading states
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js
+- TypeScript
+- Tailwind CSS
+- React Context API
+- React Icons
+- React Toastify
+- REST API
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## API
 
-## Learn More
+Workout API:
 
-To learn more about Next.js, take a look at the following resources:
+https://api.abcz.workers.dev/api/fitlog
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Single workout:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+https://api.abcz.workers.dev/api/fitlog/:id
 
-## Deploy on Vercel
+## Routes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `/` - Workout Library
+- `/workout/[id]` - Workout Details
+- `/my-plan` - My Plan
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+
+The project uses the Next.js App Router
+with Server Components and Client Components
+only where interaction is required.
+
+## Deployment
+
+The project is deployed using Vercel.
