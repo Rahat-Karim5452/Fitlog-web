@@ -2,6 +2,7 @@
 
 import { useContext, useState } from "react";
 import Link from "next/link";
+
 import { FitLogContext } from "@/context/FitLogContext";
 import PlanCard from "./PlanCard";
 
@@ -13,23 +14,28 @@ const MyPlanClient = () => {
   const [activeTab, setActiveTab] = useState<ActiveTab>("plan");
   const [sortBy, setSortBy] = useState<SortType>("duration");
 
-  const totalMinutes = plan.reduce(
+  // Current tab data
+  const currentData = activeTab === "plan" ? plan : saved;
+  // Metrics
+  const totalExercises = currentData.length;
+  const totalMinutes = currentData.reduce(
     (total, workout) => total + workout.duration,
     0,
   );
-
-  const totalCalories = plan.reduce(
+  const totalCalories = currentData.reduce(
     (total, workout) => total + workout.caloriesBurned,
     0,
   );
-
-  const currentList = [...(activeTab === "plan" ? plan : saved)].sort(
-    (a, b) => {
-      if (sortBy === "duration") return b.duration - a.duration;
-      if (sortBy === "calories") return b.caloriesBurned - a.caloriesBurned;
-      return b.rating - a.rating;
-    },
-  );
+  // Sort current tab data
+  const currentList = [...currentData].sort((a, b) => {
+    if (sortBy === "duration") {
+      return b.duration - a.duration;
+    }
+    if (sortBy === "calories") {
+      return b.caloriesBurned - a.caloriesBurned;
+    }
+    return b.rating - a.rating;
+  });
 
   return (
     <main className="w-full px-4 py-6 sm:px-6 md:px-10 lg:px-20 xl:px-35 md:py-10">
@@ -37,22 +43,26 @@ const MyPlanClient = () => {
         <h1 className="text-2xl font-black uppercase tracking-tight sm:text-3xl">
           My Plan
         </h1>
+
         <p className="mt-2 text-sm text-zinc-500">
           Cap of five lifts for today. Finish them, then load more.
         </p>
       </div>
 
+      {/* Metrics */}
       <div className="mt-6 overflow-hidden rounded-2xl border border-white/10 bg-zinc-900">
         <div className="grid grid-cols-3">
           <div className="px-3 py-4 sm:px-5 sm:py-6">
             <p className="text-xs text-zinc-500">Exercises</p>
+
             <p className="mt-1 text-xl font-black text-lime-400 sm:text-2xl md:text-3xl">
-              {plan.length}
+              {totalExercises}
             </p>
           </div>
 
           <div className="border-l border-white/10 px-3 py-4 sm:px-5 sm:py-6">
             <p className="text-xs text-zinc-500">Minutes</p>
+
             <p className="mt-1 text-xl font-black sm:text-2xl md:text-3xl">
               {totalMinutes}
             </p>
@@ -60,6 +70,7 @@ const MyPlanClient = () => {
 
           <div className="border-l border-white/10 px-3 py-4 sm:px-5 sm:py-6">
             <p className="text-xs text-zinc-500">Calories</p>
+
             <p className="mt-1 text-xl font-black sm:text-2xl md:text-3xl">
               {totalCalories}
             </p>
@@ -93,7 +104,7 @@ const MyPlanClient = () => {
           </button>
         </div>
 
-        {/* Sort Start */}
+        {/* Sort */}
         <div className="flex items-center gap-3">
           <label htmlFor="sort" className="text-sm text-zinc-400">
             Sort By
@@ -119,9 +130,11 @@ const MyPlanClient = () => {
             <h2 className="text-2xl font-black uppercase sm:text-3xl">
               Nothing here yet
             </h2>
+
             <p className="mx-auto mt-3 max-w-md text-sm text-zinc-400 sm:text-base">
               Browse the library and add a lift to get today moving.
             </p>
+
             <Link
               href="/"
               className="mt-6 inline-flex rounded-full bg-lime-400 px-6 py-3 font-bold uppercase text-black transition hover:bg-lime-300"
