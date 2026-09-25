@@ -7,29 +7,33 @@ const NavLinks = () => {
   const pathname = usePathname();
 
   return (
-    <div className="hidden items-center gap-2 md:flex">
-      <Link
-        href="/"
-        className={`rounded-full px-5 py-2 text-sm font-bold transition ${
-          pathname === "/"
-            ? "bg-lime-400 text-black"
-            : "text-zinc-400 hover:text-white"
-        }`}
-      >
-        Workouts
-      </Link>
+    <>
+      <li>
+        <Link
+          href="/"
+          className={
+            pathname === "/"
+              ? "bg-lime-400 text-black rounded-full px-5 py-2 text-sm font-bold transition"
+              : "text-zinc-400 hover:text-white rounded-full px-5 py-2 text-sm font-bold transition"
+          }
+        >
+          Workouts
+        </Link>
+      </li>
 
-      <Link
-        href="/my-plan"
-        className={`rounded-full px-5 py-2 text-sm font-bold transition ${
-          pathname === "/my-plan"
-            ? "bg-lime-400 text-black"
-            : "text-zinc-400 hover:text-white"
-        }`}
-      >
-        My Plan
-      </Link>
-    </div>
+      <li>
+        <Link
+          href="/my-plan"
+          className={
+            pathname === "/my-plan"
+              ? "bg-lime-400 text-black rounded-full px-5 py-2 text-sm font-bold transition"
+              : "text-zinc-400 hover:text-white rounded-full px-5 py-2 text-sm font-bold transition"
+          }
+        >
+          My Plan
+        </Link>
+      </li>
+    </>
   );
 };
 
